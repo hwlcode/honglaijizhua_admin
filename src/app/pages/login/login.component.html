@@ -1,0 +1,29 @@
+<div class="login-body">
+  <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <h1>洪濑鸡爪小程序后台管理</h1>
+    <h2>用心做世上最有思想的的鸡爪</h2>
+    <nz-form-item>
+      <div class="alert-error">
+        <nz-alert nzType="error" nzMessage="{{errMsg}}" nzShowIcon [hidden]="hidden"></nz-alert>
+      </div>
+      <nz-form-control nzErrorTip="请输入用户名!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="userName" placeholder="请输入用户名"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="用户名或密码不正确!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" placeholder="请输入用户密码"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button class="login-form-button" [nzType]="'primary'">登 录</button>
+      </nz-form-control>
+<!--      <a href="">微信扫码登录</a>-->
+    </nz-form-item>
+  </form>
+</div>

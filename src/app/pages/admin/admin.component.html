@@ -1,0 +1,70 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a routerLink="/admin">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>小程序后台管理</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-submenu nzOpen nzTitle="工作台" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/welcome">产品管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>订单管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>用户管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>活动管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>财务管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>库存管理</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>评论管理</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzOpen nzTitle="设置" nzIcon="setting">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/admin/setting">接单设置</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a>商家设置</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+        <a href="/login">退出</a>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
