@@ -14,6 +14,8 @@ import {AdminComponent} from './pages/admin/admin.component';
 import {SettingComponent} from './pages/admin/setting/setting.component';
 import {RegisterComponent} from './pages/register/register.component';
 import {AuthInterceptor} from './http-interceptors/auth-interceptor';
+import {AuthServiceService} from './auth-service.service';
+import {AuthGuardGuard} from './auth-guard.guard';
 
 registerLocaleData(zh);
 
@@ -35,8 +37,12 @@ registerLocaleData(zh);
     BrowserAnimationsModule
   ],
   providers: [
+    AuthServiceService,
     {provide: NZ_I18N, useValue: zh_CN},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,
+    },
+    AuthGuardGuard
   ],
   bootstrap: [AppComponent]
 })

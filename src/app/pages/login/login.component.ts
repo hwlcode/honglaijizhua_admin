@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
 
     if (this.validateForm.valid) {
       this.http.post('/api/admin/login', this.validateForm.value)
-      // .map(res => res.json())
         .subscribe(json => {
           if (json['status'] === 200) {
             this.router.navigateByUrl('/admin');
