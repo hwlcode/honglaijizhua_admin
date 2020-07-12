@@ -1,0 +1,49 @@
+<div class="login-body">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="login-form">
+    <h1>注册</h1>
+    <nz-form-item>
+      <div class="alert-error">
+        <nz-alert nzType="error" nzMessage="{{errMsg}}" nzShowIcon [hidden]="hidden"></nz-alert>
+      </div>
+      <div class="alert-success">
+        <nz-alert nzType="success" nzMessage="{{errMsg}}" nzShowIcon [hidden]="show"></nz-alert>
+      </div>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">邮箱</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="邮箱格式不正确!">
+        <input nz-input formControlName="email" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phone">手机</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="手机号码格式不正确!">
+        <input nz-input formControlName="phone" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>密码</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码!">
+        <input nz-input type="password" formControlName="password" (ngModelChange)="updateConfirmValidator()" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>确认密码</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <input nz-input type="password" formControlName="checkPassword" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            请输入确认密码!
+          </ng-container>
+          <ng-container *ngIf="control.hasError('confirm')">
+            两次输入的密码不一致!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">注册新用户</button>
+        <a routerLink="/login" class="have-account">己有帐号，去登录</a>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

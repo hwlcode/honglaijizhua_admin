@@ -38,17 +38,15 @@ export class LoginComponent implements OnInit {
       this.http.post('/api/admin/login', this.validateForm.value)
       // .map(res => res.json())
         .subscribe(json => {
-          if (json['code'] === 0) {
+          if (json['status'] === 200) {
             this.router.navigateByUrl('/admin');
             this.hidden = true;
             this.errMsg = '';
-            if (window.sessionStorage && window.sessionStorage.getItem('hl_login_usr')) {
-              window.sessionStorage.removeItem('hl_login_usr');
+            if (window.sessionStorage && window.sessionStorage.getItem('_token')) {
+              window.sessionStorage.removeItem('_token');
               window.sessionStorage.setItem('_token', json['token']);
-              window.sessionStorage.setItem('hl_login_usr', this.validateForm.value.userName);
             } else {
               window.sessionStorage.setItem('_token', json['token']);
-              window.sessionStorage.setItem('hl_login_usr', this.validateForm.value.userName);
             }
           } else {
             this.hidden = false;

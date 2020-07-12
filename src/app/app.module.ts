@@ -1,17 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IconsProviderModule } from './icons-provider.module';
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {IconsProviderModule} from './icons-provider.module';
+import {NgZorroAntdModule, NZ_I18N, zh_CN} from 'ng-zorro-antd';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { registerLocaleData } from '@angular/common';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {registerLocaleData} from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import {AdminComponent} from './pages/admin/admin.component';
 import {SettingComponent} from './pages/admin/setting/setting.component';
+import {RegisterComponent} from './pages/register/register.component';
+import {AuthInterceptor} from './http-interceptors/auth-interceptor';
 
 registerLocaleData(zh);
 
@@ -19,7 +21,8 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     AdminComponent,
-    SettingComponent
+    SettingComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,11 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    {provide: NZ_I18N, useValue: zh_CN},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

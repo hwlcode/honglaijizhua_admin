@@ -20,21 +20,21 @@
           <li nz-menu-item nzMatchRouter>
             <a>订单管理</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>用户管理</a>
-          </li>
+<!--          <li nz-menu-item nzMatchRouter>-->
+<!--            <a>用户管理</a>-->
+<!--          </li>-->
           <li nz-menu-item nzMatchRouter>
             <a>活动管理</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>财务管理</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>库存管理</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>评论管理</a>
-          </li>
+<!--          <li nz-menu-item nzMatchRouter>-->
+<!--            <a>财务管理</a>-->
+<!--          </li>-->
+<!--          <li nz-menu-item nzMatchRouter>-->
+<!--            <a>库存管理</a>-->
+<!--          </li>-->
+<!--          <li nz-menu-item nzMatchRouter>-->
+<!--            <a>评论管理</a>-->
+<!--          </li>-->
         </ul>
       </li>
       <li nz-submenu nzOpen nzTitle="设置" nzIcon="setting">
@@ -58,7 +58,7 @@
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
-        <a href="/login">退出</a>
+        <a href="javascript:;" class="login-out" (click)="loginOut()">退出</a>
       </div>
     </nz-header>
     <nz-content>
